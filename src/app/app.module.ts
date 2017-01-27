@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+﻿import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {
@@ -14,6 +14,8 @@ import {
   RouterModule,
   PreloadAllModules
 } from '@angular/router';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -31,6 +33,7 @@ import { XLargeDirective } from './home/x-large';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
+import '../styles/bootstrap.min.css'
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -57,6 +60,7 @@ type StoreType = {
     XLargeDirective
   ],
   imports: [ // import Angular's modules
+    NgbModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpModule,

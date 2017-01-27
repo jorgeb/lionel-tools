@@ -2,23 +2,31 @@
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { routes } from './ambrosebauer.routes';
 import { AmbrosebauerComponent } from './ambrosebauer.component';
 
+import { AuctionsModule } from '../@auctions';
+
 console.log('`Detail` bundle loaded asynchronously');
 
 @NgModule({
-  declarations: [
-    // Components / Directives/ Pipes
-      AmbrosebauerComponent,
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule.forChild(routes),
-  ],
+    declarations: [
+        // Components / Directives/ Pipes
+        AmbrosebauerComponent,
+    ],
+    imports: [
+        NgbModule,
+        CommonModule,
+        FormsModule,
+        RouterModule.forChild(routes),
+        AuctionsModule,
+        HttpModule,
+    ],
 })
 export class AmbrosebauerModule {
-  public static routes = routes;
+    public static routes = routes;
 }
