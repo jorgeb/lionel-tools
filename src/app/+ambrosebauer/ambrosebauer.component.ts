@@ -6,6 +6,11 @@
 import { Http, Response, Headers, ResponseOptions } from '@angular/http';
 
 import { AmbrosebauerProvider } from './ambrosebauer.provider';
+import { IPager } from '../@pager';
+import { IAutionItem } from '../@auctions';
+import { arrayUtil } from '../@utils';
+import { Observable } from 'rxjs';
+
 /*
  * We're loading this component asynchronously
  * We are using some magic with es6-promise-loader that will wrap the module with a Promise
@@ -16,7 +21,16 @@ import { AmbrosebauerProvider } from './ambrosebauer.provider';
   selector: 'ambrosebauer',
   template: `
     <h1>Hello from Detail</h1>
-    <span>
+    <pager (pageChange)="onPageChange($event)"
+           [options]="{ currentPage: 1, pageSize: 30, totalItems: 400 }"
+           [getPageHandler]="getData"></pager>
+    <ul>
+<li *ngFor="let item of auctionItems">
+    <img src="{{item.images[0]}}" />
+<favorite [options]="item"></favorite>
+  </li>
+</ul>
+<span>
       <a [routerLink]=" ['./child-detail'] ">
         Child Detail
       </a>
@@ -77,26 +91,39 @@ export class AmbrosebauerComponent implements OnInit {
 
     public model: number = 1;
 
+    public auctionItems: Array<IAutionItem> = [];
+
     constructor(private http: Http) {
 
     }
 
     public ngOnInit() {
 
-        
-        let headers = new Headers({ 'Content-Type': 'text/html; charset=UTF-8' });
-        let options = new ResponseOptions({ headers: headers });
+        /**
+         "http://ambrosebauer.com/auction264/" filter for remove NO Auction Item IMG
+         */
         /*
-        this.http.get('//ambrosebauer.com/lotdetail.php?auction=264&lot=2',
-            options).subscribe(data => {
-                console.log(data);
-            });
-        */
         let ts: AmbrosebauerProvider = new AmbrosebauerProvider(this.http);
         ts.getAuctionItems().subscribe(data => {
             console.log(data)
         });
-        
+        */
+       
+    }
+    public onPageChange(event) {
+        console.log(event);
+
+        this.auctionItems = event;
     }
 
+    public getData = (pager: IPager): Observable<any> => {
+
+        console.log(pager);
+
+        let ts: AmbrosebauerProvider = new AmbrosebauerProvider(this.http);
+        ts.listIterator = arrayUtil.range(pager.startIndex, pager.endIndex);
+        console.log(arrayUtil.range(pager.startIndex, pager.endIndex));
+        return ts.getAuctionItems();
+    };
+  
 }

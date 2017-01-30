@@ -11,12 +11,13 @@ import { AmbrosebauerComponent } from './ambrosebauer.component';
 
 import { AuctionsModule } from '../@auctions';
 
-console.log('`Detail` bundle loaded asynchronously');
+import { PagerModule } from '../@pager';
+import { FavoriteModule } from '../@favorites';
 
 @NgModule({
     declarations: [
         // Components / Directives/ Pipes
-        AmbrosebauerComponent,
+        AmbrosebauerComponent
     ],
     imports: [
         NgbModule,
@@ -25,6 +26,8 @@ console.log('`Detail` bundle loaded asynchronously');
         RouterModule.forChild(routes),
         AuctionsModule,
         HttpModule,
+        PagerModule,
+        FavoriteModule
     ],
 })
 export class AmbrosebauerModule {
