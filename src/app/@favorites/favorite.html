@@ -1,3 +1,6 @@
-﻿<a (click)="onClick()" class="btn btn-primary btn-danger">
-  <span class="glyphicon glyphicon-heart"></span> Add To  Favorite
+﻿<a (click)="onClick()" class="btn btn-primary add-2-favorites">
+  <i class="fa fa-2x" aria-hidden="true" [ngClass]="{'fa-heart' : added, 'fa-heart-o' : !added}"></i>
 </a>
+
+<!--<a href="javascript:;" class="btn add-2-favorites">Add to cart</a>
+    <span class="glyphicon glyphicon-heart"></span> Add To  Favorite-->

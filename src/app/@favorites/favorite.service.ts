@@ -3,20 +3,42 @@
 @Injectable()
 export class FavoriteService {
 
-    public favoritesStorage: Array<any> = [];
+    public favoritesStorage: { [id: string]: any; };
 
     constructor() {
         this.favoritesStorage = JSON.parse(localStorage.getItem('favoritesStorage'));
     }
 
-    add(options: any): void {
+    add(key:string, options: any): void {
 
         if (this.favoritesStorage === null) {
-            this.favoritesStorage = [];
+            this.favoritesStorage = {};
         }
-        console.log(this.favoritesStorage)
-        this.favoritesStorage.push(options);
+
+        this.favoritesStorage[key] = options;
 
         localStorage.setItem('favoritesStorage', JSON.stringify(this.favoritesStorage));
     }
+
+    remove(key: string): void {
+
+        if (this.favoritesStorage === null) {
+            return;
+        }
+
+        delete this.favoritesStorage[key];
+
+        localStorage.setItem('favoritesStorage', JSON.stringify(this.favoritesStorage));
+    }
+
+    get(key: string): void {
+
+        if (this.favoritesStorage === null) {
+            return null;
+        }
+
+        return this.favoritesStorage[key];
+    }
+
+
 }

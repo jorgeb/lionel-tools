@@ -1,6 +1,7 @@
 ﻿import {
   Component,
   OnInit,
+  OnChanges,
   Output,
   EventEmitter,
   Input
@@ -18,10 +19,15 @@ import { FavoriteService } from './favorite.service';
   selector: 'favorite',
   template: require('./favorite.html'),
 })
-export class FavoriteComponent {
+export class FavoriteComponent implements OnChanges{
+
+    public added: boolean = false;
 
     @Input()
     public options: any;
+
+    @Input()
+    public key: string;
 
     @Output()
     public addToFavorite: EventEmitter<any> = new EventEmitter();
@@ -29,8 +35,19 @@ export class FavoriteComponent {
     constructor(private favoriteService: FavoriteService) {}
 
     public onClick() {
-        console.log(this.options)
-        this.favoriteService.add(this.options);
+
+        if (this.added) {
+            this.favoriteService.remove(this.key);
+        } else {
+            this.favoriteService.add(this.key, this.options);
+        }
+
+        this.added = !this.added;
+
         this.addToFavorite.emit(this.options);
+    }
+
+    ngOnChanges() {
+        this.added = !(this.favoriteService.get(this.key) == null);
     }
 }

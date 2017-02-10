@@ -17,7 +17,7 @@ export abstract class AuctionProvider implements IAuctionProviver {
 
     public abstract listIterator: Array<any>;
     public abstract getURLs = (iterator: any): Array<string> => { return null };
-
+    public abstract getAuctionId = (): number => { return null };
     public abstract getTitle = (html: any): string => { return null };
     public abstract getDesc = (html: any): string => { return null };
     public abstract getBid = (html: any): number => { return null };
@@ -35,14 +35,18 @@ export abstract class AuctionProvider implements IAuctionProviver {
 
     private parsePages = (pages: Array<any>): Array<IAutionItem> => {
 
+        let urls: Array<string> = this.getURLs(this.listIterator);
+
         return pages.map((page, ind) => {
+            
             return {
+                auction: this.getAuctionId(),
                 title: this.getTitle(page),
                 desc: this.getDesc(page),
                 bid: this.getBid(page),
                 endBid: this.getBid(page),
                 images: this.getImages(page),
-                externalId: ind.toString(),
+                externalId: this.getExternalId(urls[ind]),
                 Id: ind,
                 sortOrder: ind
             };

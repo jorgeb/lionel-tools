@@ -13,6 +13,7 @@ import { AuctionsModule } from '../@auctions';
 
 import { PagerModule } from '../@pager';
 import { FavoriteModule } from '../@favorites';
+import { CardModule } from '../@card';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { FavoriteModule } from '../@favorites';
         AuctionsModule,
         HttpModule,
         PagerModule,
-        FavoriteModule
+        FavoriteModule,
+        CardModule
     ],
 })
 export class AmbrosebauerModule {

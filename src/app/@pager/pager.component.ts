@@ -37,7 +37,7 @@ export class PagerComponent implements OnInit, OnChanges {
     constructor(private pagerService: PagerService) {}
 
     public ngOnInit() {
-
+        this.setPage(1);
     }
 
     public ngOnChanges(changes: SimpleChanges): void {

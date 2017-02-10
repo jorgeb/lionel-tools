@@ -1,3 +1,23 @@
+﻿
+C:\Users\Jorge\Documents\dev\lionel_tool\desktop\server>npm start
+
+> lionel-tools-srv@1.0.0 start C:\Users\Jorge\Documents\dev\lionel_tool\desktop\server
+> node app.js
+
+Listening on port 3001...
+
+===========================================================================================
+
+CLiente
+C:\Users\Jorge\Documents\dev\lionel_tool\desktop>npm run server
+
+> angular2-webpack-starter@5.4.1 server C:\Users\Jorge\Documents\dev\lionel_tool\desktop
+> npm run server:dev
+
+
+
+
+
 <p align="center">
   <a href="http://courses.angularclass.com/courses/angular-2-fundamentals?utm_source=github-angular2-webpack-starter&utm_medium=open-source&utm_campaign=webpackstarter" target="_blank">
     <img width="438" alt="Angular 2 Fundamentals" src="https://cloud.githubusercontent.com/assets/1016365/17200649/085798c6-543c-11e6-8ad0-2484f0641624.png">

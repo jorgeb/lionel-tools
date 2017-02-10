@@ -19,4 +19,27 @@ export class  arrayUtil {
 
         return range;
     }
+
+    public static arrayToTable = function (array: Array<any>, numOfCols: number): Array<any> {
+        var arrayLength = array.length;
+        var rows = [{
+            columns: []
+        }];
+        var rowNum = 0;
+        for (var i = 0; i < arrayLength; i++) {
+            var rowMod = (i) % numOfCols;
+            if (rowMod === 0) {
+                rows.push({
+                    columns: []
+                });
+            }
+            rows[rowNum].columns.push(array[i]);
+
+            if (rowMod === numOfCols - 1) {
+                rowNum++;
+            }
+        }
+
+        return rows;
+    };
 }

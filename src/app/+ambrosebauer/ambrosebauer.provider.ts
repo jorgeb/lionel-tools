@@ -19,6 +19,11 @@ export class AmbrosebauerProvider extends AuctionProvider {
     }
 
     public listIterator: Array<any>;
+
+    public getAuctionId = (): number => {
+        return 265;
+    };
+
     public getURLs = (iterator: any): Array<string> => {
         return iterator.map(i => {
             return 'http://localhost:3001/url/'
@@ -28,7 +33,7 @@ export class AmbrosebauerProvider extends AuctionProvider {
 
     public getTitle = (html: any): string => {
 
-        return $('table[width="500"] p font[color="#400000"] b', html).text();
+        return $('table[width="500"] p font[color="#400000"]', html).text();
     };
 
     public getDesc = (html: any): string => {
@@ -61,7 +66,12 @@ export class AmbrosebauerProvider extends AuctionProvider {
         return ret.concat(rawImgs);
         
     };
-    public getExternalId = (html: string): string => { return null };
+    public getExternalId = (url: string): string => {
+
+        return url.replace(
+            'http://localhost:3001/url/' + encodeURIComponent(`http://ambrosebauer.com/lotdetail.php?auction=`),
+            '')
+    };
 
     public mapForPage = (response): any => {
 

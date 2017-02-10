@@ -1,4 +1,5 @@
 ﻿export interface IAutionItem {
+    auction: number;
     title: string;
     desc: string;
     bid?: number;
