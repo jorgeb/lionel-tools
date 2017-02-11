@@ -14,6 +14,7 @@ import { AuctionsModule } from '../@auctions';
 import { PagerModule } from '../@pager';
 import { FavoriteModule } from '../@favorites';
 import { CardModule } from '../@card';
+import { SpinnerModule } from '../@spinner';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,8 @@ import { CardModule } from '../@card';
         HttpModule,
         PagerModule,
         FavoriteModule,
-        CardModule
+        CardModule,
+        SpinnerModule
     ],
 })
 export class AmbrosebauerModule {
