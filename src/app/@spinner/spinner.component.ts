@@ -4,7 +4,8 @@
     state,
     style,
     transition,
-    animate
+    animate,
+    ViewEncapsulation
 } from '@angular/core';
 
 import { PromiseTrackerService } from './promise-tracker.service';
@@ -21,8 +22,10 @@ export interface ISpinnerContext {
 };
 
 @Component({
-    selector: 'ng-busy',
+    selector: 'spinner-loader',
     template: require('./spinner.html'),
+    styleUrls: ['./spinner.scss'],
+    encapsulation: ViewEncapsulation.None,
     animations: [
         trigger('flyInOut', [
             transition('void => *', [

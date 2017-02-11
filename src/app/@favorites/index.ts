@@ -1,2 +1,4 @@
-﻿export { FavoriteModule} from './favorite.module';
+﻿export { FavoriteModule } from './favorite.module';
+export { FavoritesViewerModule } from './favorites-viewer.module';
+export { IFavoriteOptions } from './favorite-options.interface'
 //export { TsComponent } from './ts.component';

@@ -21,7 +21,8 @@ import { PromiseTrackerService } from './promise-tracker.service';
 
 @Directive({
     selector: '[spinner]',
-    providers: [PromiseTrackerService]
+    providers: [PromiseTrackerService],
+    host: { '[class.spinner-loader]': 'true' }
 })
 export class SpinnerDirective implements DoCheck {
 

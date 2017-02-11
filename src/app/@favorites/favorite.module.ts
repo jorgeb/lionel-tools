@@ -1,5 +1,6 @@
 ﻿import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+
 import { FavoriteComponent } from './favorite.component';
 import { FavoriteService } from './favorite.service'
 
@@ -8,9 +9,12 @@ import { FavoriteService } from './favorite.service'
         // Components / Directives/ Pipes
         FavoriteComponent
     ],
-    exports: [FavoriteComponent],
+    exports: [
+        FavoriteComponent
+    ],
     imports: [
-        CommonModule],
+        CommonModule
+    ],
     providers: [
         FavoriteService
     ]

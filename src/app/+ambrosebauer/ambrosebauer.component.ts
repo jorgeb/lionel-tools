@@ -9,7 +9,11 @@ import { AmbrosebauerProvider } from './ambrosebauer.provider';
 import { IPager } from '../@pager';
 import { IAutionItem } from '../@auctions';
 import { arrayUtil } from '../@utils';
-import { Observable } from 'rxjs';
+import {
+    Observable,
+    Observer,
+    Subscription
+} from 'rxjs';
 
 /*
  * We're loading this component asynchronously
@@ -25,28 +29,47 @@ export class AmbrosebauerComponent implements OnInit {
     
     public auctionItems: Array<IAutionItem> = [];
     public auctionItemsNOSplit: Array<IAutionItem> = [];
+
+    private spinnerHandler: Subscription;
+    private spinnerObs: Observer<any>;
+
     constructor(private http: Http) {
 
     }
 
     public ngOnInit() {
 
-       
     }
+
     public onPageChange(event) {
         console.log(event);
 
         this.auctionItemsNOSplit = event;
         this.auctionItems = arrayUtil.arrayToTable(event, 4);
+
+        this.spinnerObs.complete();
     }
 
     public getData = (pager: IPager): Observable<any> => {
 
-        console.log(pager);
-
         let ts: AmbrosebauerProvider = new AmbrosebauerProvider(this.http);
         ts.listIterator = arrayUtil.range(pager.startIndex + 1, pager.endIndex + 2);
         console.log(arrayUtil.range(pager.startIndex + 1, pager.endIndex + 2));
+
+        this.spinnerHandler = Observable.create(observer => {
+            this.spinnerObs = observer;
+        }).subscribe();
+
+        /*
+                let dummy = Observable.create(observer => {
+            this.spinnerObs = observer;
+        });
+
+        this.spinnerHandler = dummy.subscribe();
+
+        return dummy; //ts.getAuctionItems();
+
+        */
         return ts.getAuctionItems();
     };
   

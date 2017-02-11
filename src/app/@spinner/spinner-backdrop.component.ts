@@ -4,6 +4,7 @@
     state,
     style,
     transition,
+    ViewEncapsulation,
     animate
 } from '@angular/core';
 
@@ -16,8 +17,10 @@ const inactiveStyle = style({
 const timing = '.3s ease';
 
 @Component({
-    selector: 'ng-busy-backdrop',
+    selector: 'spinner-backdrop',
     template: require('./spinner-backdrop.html'),
+    styleUrls: ['./backdrop.scss'],
+    encapsulation: ViewEncapsulation.None,
     animations: [
         trigger('fadeInOut', [
             transition('void => *', [

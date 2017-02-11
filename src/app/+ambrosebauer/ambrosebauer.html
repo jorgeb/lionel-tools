@@ -1,65 +1,23 @@
-﻿<h1 class="">Hello from Detail</h1>
-<pager (pageChange)="onPageChange($event)"
-       [options]="{ currentPage: 1, pageSize: 40, totalItems: 400 }"
-       [getPageHandler]="getData"></pager>
-<!--
-<ul>
-  <li *ngFor="let item of auctionItems">
-    <img src="{{item.images[0]}}" />
-    <favorite [options]="item"></favorite>
-  </li>
-</ul>
--->
+﻿
 <div class="container">
-  <div class="row" spinner="">
-   
+  <div class="row">
+    <favorites-viewer></favorites-viewer>
+  </div>
+  <div class="row">
+    <pager (pageChange)="onPageChange($event)"
+           [options]="{ currentPage: 1, pageSize: 40, totalItems: 400 }"
+           [getPageHandler]="getData"></pager>
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="row" [spinner]="spinnerHandler">
+
     <div class="col-sm-3" *ngFor="let item of auctionItemsNOSplit">
       <lt-card [options]="{title: item.title, imgUrl:item.images[0], price:item.bid, key:'amb-' + item.externalId}"></lt-card>
     </div>
-    <!--
-    <ngb-carousel [interval]="0">
 
-      <template ngbSlide *ngFor="let column of auctionItems">
-        <div class="row">
-
-          <div class="col-sm-3" *ngFor="let item of column.columns">
-            <div class="col-item">
-              <div class="photo">
-                <img src="{{item.images[0]}}" class="img-fluid" alt="a" />
-              </div>
-              <div class="info">
-                <div class="row">
-                  <div class="price col-md-12">
-                    <h5>
-                      {{item.title}}
-                    </h5>
-                    <h5 class="price-text-color">
-                      {{item.bid}}
-                    </h5>
-                  </div>
-                  <div class="rating hidden-sm col-md-12">
-                    <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                    </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                    </i><i class="fa fa-star"></i>
-                  </div>
-                </div>
-                <div class="separator clear-left">
-                  <p class="btn-add">
-                    <i class="fa fa-shopping-cart"></i><a href="http://www.jquery2dotnet.com" class="hidden-sm">Add to cart</a>
-                  </p>
-                  <p class="btn-details">
-                    <i class="fa fa-list"></i><a href="http://www.jquery2dotnet.com" class="hidden-sm">More details</a>
-                  </p>
-                </div>
-                <div class="clearfix">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </template>
-    </ngb-carousel>
-    -->
   </div>
 </div>
 
