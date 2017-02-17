@@ -1,0 +1,38 @@
+<html ng-app="spread2TS">
+  <head>
+    <base target="_top" href="<?!= getAppUrl(); ?>">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <?!= include('home.styles'); ?>
+
+  </head>
+
+  <body>
+    <div class="sample-container">
+      <button class="action" id="runServer" onclick="runServer_onclick();">Server</button>
+      <button id="runClient" onclick="runClient_onclick();">Client</button>
+    </div>
+
+    <a ui-sref="login" ui-sref-active="active">portal</a>
+    <a ui-sref="about" ui-sref-active="active">About</a>
+
+    <ui-view></ui-view>
+
+    <?!= include('home.scripts'); ?>
+    
+    <script>
+      var mode = '<?= mode ?>';
+    </script>
+
+    <script>
+      <?!= include('templates.js'); ?>
+    </script>
+
+    <?!= include('app.module.client.js'); ?>
+
+    <script>
+      <?!= include('components.js'); ?>
+    </script>
+  </body >
+</html >

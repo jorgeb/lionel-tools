@@ -19,7 +19,7 @@ import { FavoriteService } from './favorite.service';
   selector: 'favorite',
   template: require('./favorite.html'),
 })
-export class FavoriteComponent implements OnChanges{
+export class FavoriteComponent implements OnChanges, OnInit{
 
     public added: boolean = false;
 
@@ -32,7 +32,21 @@ export class FavoriteComponent implements OnChanges{
     @Output()
     public addToFavorite: EventEmitter<any> = new EventEmitter();
 
-    constructor(private favoriteService: FavoriteService) {}
+    constructor(private favoriteService: FavoriteService) {
+    }
+
+    public ngOnInit() {
+        this.favoriteService.updateInFavorites.subscribe(option => {
+
+            if (this.options.key === option.favorite.key) {
+                this.added = !this.added;
+
+                this.addToFavorite.emit(this.options);
+
+            }
+        });
+
+    }
 
     public onClick() {
 
@@ -41,10 +55,6 @@ export class FavoriteComponent implements OnChanges{
         } else {
             this.favoriteService.add(this.key, this.options);
         }
-
-        this.added = !this.added;
-
-        this.addToFavorite.emit(this.options);
     }
 
     ngOnChanges() {

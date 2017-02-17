@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">Interface Builder</div>
+    </div>
+  </div>
+  <hr>
+
+  <div id="theGrid"></div>
+
+  <? var data = getData(); ?>
+
+  <div class="row">
+    <
+  </div>
+
+  <table>
+    <? for (var i = 0; i < data.length; i++) { ?>
+    <tr>
+      <? for (var j = 0; j < data[i].length; j++) { ?>
+      <td><?= data[i][j] ?></td>
+      <? } ?>
+    </tr>
+    <? } ?>
+  </table>
+
+  <script src="//code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
+  <!--Theme-->
+  <link href="//cdn.wijmo.com/themes/aristo/jquery-wijmo.css" rel="stylesheet" type="text/css" title="rocket-jqueryui" />
+  <!--Wijmo Widgets CSS-->
+  <link href="//cdn.wijmo.com/jquery.wijmo-complete.all.2.1.0.min.css" rel="stylesheet" type="text/css" />
+  <!--Wijmo Widgets JavaScript-->
+  <script src="//cdn.wijmo.com/5.20163.259/controls/wijmo.min.js"></script>
+  <link href="//cdn.wijmo.com/5.20163.259/styles/wijmo.min.css" rel="stylesheet" />
+  <script src="//cdn.wijmo.com/5.20163.259/controls/wijmo.grid.min.js"></script>
+
+  <script>
+
+    onload = function () {
+
+      // generate some random data
+      var countries = 'US,Germany,UK,Japan,Italy,Greece'.split(','),
+        data = [];
+      for (var i = 0; i < countries.length; i++) {
+        data.push({
+          country: countries[i],
+          downloads: Math.round(Math.random() * 20000),
+          sales: Math.random() * 10000,
+          expenses: Math.random() * 5000
+        });
+      }
+
+      // wrap data in a CollectionView to get updates
+      // (so editing the grid updates the chart)
+      var view = new wijmo.collections.CollectionView(data);
+
+      // create grid and show data
+      var grid = new wijmo.grid.FlexGrid('#theGrid', {
+        itemsSource: view
+      });
+
+    }
+  </script>
+</body>
+</html>

@@ -60,17 +60,18 @@ export class AmbrosebauerComponent implements OnInit {
             this.spinnerObs = observer;
         }).subscribe();
 
-        /*
-                let dummy = Observable.create(observer => {
+        return ts.getAuctionItems();
+    };
+
+    public getData_ = (pager: IPager): Observable<any> => {
+
+        let dummy = Observable.create(observer => {
             this.spinnerObs = observer;
         });
 
         this.spinnerHandler = dummy.subscribe();
 
-        return dummy; //ts.getAuctionItems();
-
-        */
-        return ts.getAuctionItems();
+        return dummy; 
     };
   
 }

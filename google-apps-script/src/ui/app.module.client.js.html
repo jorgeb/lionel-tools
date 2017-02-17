@@ -1,0 +1,41 @@
+﻿<script>
+(function () {
+    'use strict';
+
+    angular
+      .module('spread2TS', [
+        'ui.router',
+        'templates',
+        'rx']);
+
+    angular
+        .module('spread2TS')
+        .run(function($templateCache) {
+            $templateCache.put('templateId.html', 'This is the content of the template');
+        });
+
+
+    var routerConfig = function($stateProvider) {
+
+          var aboutState = {
+            name: 'about',
+            url: '/about',
+            templateUrl: 'template-one.html'
+          }
+
+          $stateProvider
+            .state('login', {
+              url: '/login',
+              templateUrl: 'template-two.html'
+            })
+            .state(aboutState);
+        };
+
+    routerConfig.$inject = ['$stateProvider'];
+
+    angular
+        .module('spread2TS')
+        .config(routerConfig);
+
+})();
+</script>

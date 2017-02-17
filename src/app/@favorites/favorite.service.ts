@@ -1,10 +1,13 @@
 ﻿import { Injectable } from '@angular/core';
 import { IFavoriteOptions } from './favorite-options.interface';
+import { ReplaySubject } from 'rxjs';
 
 @Injectable()
 export class FavoriteService {
 
     private favoritesStorage: { [id: string]: any; };
+
+    public updateInFavorites: ReplaySubject<any> = new ReplaySubject(null);
 
     constructor() {
         this.favoritesStorage = JSON.parse(localStorage.getItem('favoritesStorage'));
@@ -17,8 +20,9 @@ export class FavoriteService {
         }
 
         this.favoritesStorage[key] = options;
-
         localStorage.setItem('favoritesStorage', JSON.stringify(this.favoritesStorage));
+
+        this.updateInFavorites.next({ action: 'add', favorite: this.get(key) });
     }
 
     remove(key: string): void {
@@ -27,9 +31,13 @@ export class FavoriteService {
             return;
         }
 
+        const removed = this.get(key);
+       
         delete this.favoritesStorage[key];
 
         localStorage.setItem('favoritesStorage', JSON.stringify(this.favoritesStorage));
+
+        this.updateInFavorites.next({ action: 'delete', favorite: removed });
     }
 
     get(key: string): void {
@@ -53,7 +61,17 @@ export class FavoriteService {
             ret.push(this.favoritesStorage[item]);
         }
 
-        return ret;
+        return ret.sort((v1, v2) => {
+            if (v1.key > v2.key) {
+                return 1;
+            }
+
+            if (v1.key < v2.key) {
+                return -1;
+            }
+
+            return 0;
+        });
     }
 
 }

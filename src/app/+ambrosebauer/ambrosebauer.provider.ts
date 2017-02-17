@@ -21,13 +21,13 @@ export class AmbrosebauerProvider extends AuctionProvider {
     public listIterator: Array<any>;
 
     public getAuctionId = (): number => {
-        return 265;
+        return 266;
     };
 
     public getURLs = (iterator: any): Array<string> => {
         return iterator.map(i => {
             return 'http://localhost:3001/url/'
-                + encodeURIComponent(`http://ambrosebauer.com/lotdetail.php?auction=265&lot=${i}`);
+                + encodeURIComponent(`http://ambrosebauer.com/lotdetail.php?auction=266&lot=${i}`);
         });
     };
 

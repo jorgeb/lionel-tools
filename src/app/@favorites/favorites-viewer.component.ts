@@ -25,5 +25,10 @@ export class FavoritesViewerComponent implements OnInit {
 
     ngOnInit() {
         this.favorites = arrayUtil.arrayToTable(this.favoriteService.getAll(), 6);
+
+        this.favoriteService.updateInFavorites.subscribe(option => {
+            console.log(option)
+            this.favorites = arrayUtil.arrayToTable(this.favoriteService.getAll(), 6);
+        });
     }
 }

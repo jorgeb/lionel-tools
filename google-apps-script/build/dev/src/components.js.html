@@ -1,0 +1,55 @@
+(function () {
+    'use strict';
+    
+    angular.module('spread2TS')
+        .component('spreadMap', {
+            templateUrl: 'spread-map.html',
+            controller: 'spreadMapController',
+            controllerAs: 'sm'
+        });
+})();
+(function () {
+  'use strict';
+  console.log(' spreadMapController');
+  angular.module('spread2TS')
+      .controller('spreadMapController', function (spreadMapService) {
+        var dd = this;
+          
+        spreadMapService.getColumnsFromSpread('1-4bmqP7mIVegdCd-aHeFI0ZfZ9xmfwnrK7yG0YC4TIY')
+            .subscribe(function (columns) {
+              console.log(columns);
+        });
+
+        dd.vMM = "Otro vez! JAV";
+      });
+})();
+
+(function () {
+  'use strict';
+
+  angular.module('spread2TS')
+    .factory('spreadMapService', function () {
+
+      return {
+        getColumnsFromSpread: function (spreadId) {
+
+          return Rx.Observable.create(function (observer){
+            // Yield a single value and complete
+            var retFromSvr = function (data) {
+              observer.onNext(data);
+              observer.onCompleted();
+            };
+
+            google.script.run
+              .withSuccessHandler(retFromSvr)
+              .getSpreadColumns(spreadId);
+
+            return function () {
+                console.log('disposed');
+            };
+          });
+        }
+      };
+    });
+
+})();
