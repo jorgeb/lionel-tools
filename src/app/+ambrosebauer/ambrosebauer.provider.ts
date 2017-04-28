@@ -21,13 +21,13 @@ export class AmbrosebauerProvider extends AuctionProvider {
     public listIterator: Array<any>;
 
     public getAuctionId = (): number => {
-        return 266;
+        return 270;
     };
 
     public getURLs = (iterator: any): Array<string> => {
         return iterator.map(i => {
             return 'http://localhost:3001/url/'
-                + encodeURIComponent(`http://ambrosebauer.com/lotdetail.php?auction=266&lot=${i}`);
+                + encodeURIComponent(`http://ambrosebauer.com/lotdetail.php?auction=${this.getAuctionId()}&lot=${i}`);
         });
     };
 
@@ -81,3 +81,7 @@ export class AmbrosebauerProvider extends AuctionProvider {
     };
 
 }
+
+/*
+INSERT INTO 1iVYS6XMviFJPkZqNqQ-mcujExUA66X0c9apvkhQ3 (LionelId,Title,Desc,Images,LionelExternalId,LionelPartId,LionelEraId,ItemCategoryId,CategoryBySource) VALUES ('e45c3bb6-9c12-cd33-16d8-c27861e021d8','ver','ver','ver','ver','ver','ver','ver','ver')
+*/

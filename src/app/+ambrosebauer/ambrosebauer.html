@@ -5,7 +5,7 @@
   </div>
   <div class="row">
     <pager (pageChange)="onPageChange($event)"
-           [options]="{ currentPage: 1, pageSize: 36, totalItems: 600 }"
+           [options]="{ currentPage: 1, pageSize: 36, totalItems: 400 }"
            [getPageHandler]="getData"></pager>
 
   </div>
@@ -15,7 +15,8 @@
   <div class="row" [spinner]="spinnerHandler">
 
     <div class="col-sm-3" *ngFor="let item of auctionItemsNOSplit">
-      <lt-card [options]="{title: item.title, imgUrl:item.images[0], price:item.bid, key:'amb-' + item.externalId}"></lt-card>
+      <lt-card [options]="{title: item.title, imgUrl:item.images[0], price:item.bid, key:'amb-' + item.externalId,
+               url:'http://ambrosebauer.com/lotdetail.php?auction=' + item.auction + '&lot=' + item.externalId.split('%3D')[1] }"></lt-card>
     </div>
 
   </div>

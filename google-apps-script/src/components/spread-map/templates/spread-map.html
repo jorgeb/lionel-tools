@@ -1,2 +1,43 @@
 ﻿<p>Si! => vMM</p>
-<p> => {{dd.vMM}}</p>
+<p> => {{vMM}}</p>
+
+<pre>{{columns}}</pre>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Add</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Map Name</th>
+      <th>Map Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="column in columns">
+      <th scope="row">{{column.columnId}}</th>
+      <td><input type="checkbox" name="chkAdd" checked="checked" ng-model="column.Append" /></td>
+      <td>{{column.name}}</td>
+      <td>{{column.type}}</td>
+      <td>
+        <div class="form-group has-success">
+          <input type="text" class="form-control form-control-success" ng-model="column.MapName" />
+        </div>
+      </td>
+      <td><div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Action
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Separated link</a>
+  </div>
+</div></td>
+    </tr>
+  </tbody>
+</table>

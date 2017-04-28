@@ -4,23 +4,30 @@
     angular.module('spread2TS')
         .component('spreadMap', {
             templateUrl: 'spread-map.html',
-            controller: 'spreadMapController',
-            controllerAs: 'sm'
+            controller: 'spreadMapController'
         });
 })();
 (function () {
   'use strict';
   console.log(' spreadMapController');
   angular.module('spread2TS')
-      .controller('spreadMapController', function (spreadMapService) {
-        var dd = this;
-          
-        spreadMapService.getColumnsFromSpread('1-4bmqP7mIVegdCd-aHeFI0ZfZ9xmfwnrK7yG0YC4TIY')
-            .subscribe(function (columns) {
-              console.log(columns);
+      .controller('spreadMapController', function ($scope,tableMapService) {
+        var sm = this;
+
+        tableMapService.getTable('1iVYS6XMviFJPkZqNqQ-mcujExUA66X0c9apvkhQ3')
+            .subscribe(function (table) {
+                $scope.columns = table.columns.map(function (c) {
+
+                    c.MapName = c.name;
+                    c.Append = true;
+
+                    return c;
+                });
+
+                $scope.$applyAsync();
         });
 
-        dd.vMM = "Otro vez! JAV";
+        $scope.vMM = "Otro vez! JAV";
       });
 })();
 
@@ -51,5 +58,47 @@
         }
       };
     });
+
+})();
+(function () {
+    'use strict';
+
+    angular.module('spread2TS')
+        .factory('tableMapService', function () {
+
+            return {
+                getTable: function (tableId) {
+
+                    return Rx.Observable.create(function (observer) {
+                        // Yield a single value and complete
+                        var retFromSvr = function (data) {
+
+                            observer.onNext(data);
+                            observer.onCompleted();
+                        };
+
+                        google.script.run
+                            .withSuccessHandler(retFromSvr)
+                            .getTable(tableId);
+
+                        return function () {
+                            console.log('disposed');
+                        };
+                    });
+                }
+            };
+        });
+
+})();
+(function () {
+    'use strict';
+
+    angular.module('spread2TS')
+        .factory('typescriptBuilderService', function () {
+
+            return {
+                getTypes: ['boolean', 'number', 'string', 'Date']
+            };
+        });
 
 })();

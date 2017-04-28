@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Custom Type Definitions
  * When including 3rd party modules you also need to include the type definition for the module
  * if they don't provide one within the module. You can try to install it with @types
@@ -128,3 +128,65 @@ interface ErrorConstructor extends ErrorStackTraceLimit {}
 interface NodeRequireFunction extends Es6PromiseLoader  {}
 interface NodeModule extends WebpackModule {}
 interface Global extends GlobalEnvironment  {}
+
+// Echoes typings
+interface GoogleApiOAuth2TokenObject {
+    /**
+     * The OAuth 2.0 token. Only present in successful responses
+     */
+    access_token: string;
+    /**
+     * Details about the error. Only present in error responses
+     */
+    error: string;
+    /**
+     * The duration, in seconds, the token is valid for. Only present in successful responses
+     */
+    expires_in: string;
+    /**
+     * The Google API scopes related to this token
+     */
+    state: string;
+}
+
+interface GoogleApiAuthBasic {
+    get(): any;
+}
+interface GoogleAuthCurrentUSerBasicProfile {
+    getId(): string;
+    getName(): string;
+    getGivenName(): string;
+    getFamilyName(): string;
+    getImageUrl(): string;
+    getEmail(): string;
+}
+interface GoogleAuthResponse {
+    access_token: string;
+    id_token: string;
+    login_hint: string;
+    scope: string;
+    expires_in: string;
+    first_issued_at: string;
+    expires_at: string;
+}
+interface GoogleAuthCurrentUser extends GoogleApiAuthBasic {
+    listen(listener: (GoogleUser: any) => any);
+    getId(): string;
+    isSignedIn(): boolean;
+    getBasicProfile(): GoogleAuthCurrentUSerBasicProfile;
+    getAuthResponse(): GoogleAuthResponse;
+    reloadAuthResponse(): Promise<GoogleAuthResponse>;
+}
+interface GoogleAuthSignInOptions {
+    app_package_name?: string;
+    fetch_basic_profile?: boolean;
+    prompt?: string;
+    scope?: string;
+}
+interface GoogleAuthResponse extends GoogleApiOAuth2TokenObject {
+    isSignedIn: GoogleApiAuthBasic;
+    currentUser: GoogleAuthCurrentUser;
+    signIn(options?: GoogleAuthSignInOptions): Promise<any>;
+    signOut(): Promise<any>;
+    disconnect(): void;
+}

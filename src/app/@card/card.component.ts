@@ -32,4 +32,8 @@ export class CardComponent {
         console.log('card')
 
     }
+
+    public toConsole(options) {
+        console.log(`<tr><td><img src="${options.imgUrl}" /></td><td><a href="${options.url}" target="_blank"><span>${options.title}</span></a></td><td><span>${options.price}</span></td></tr>`);
+    }
 }

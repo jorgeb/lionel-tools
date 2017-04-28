@@ -12,5 +12,7 @@ export const ROUTES: Routes = [
   { path: 'detail', loadChildren: './+detail#DetailModule'},
   { path: 'barrel', loadChildren: './+barrel#BarrelModule' },
   { path: 'ambrosebauer', loadChildren: './+ambrosebauer#AmbrosebauerModule' },
+  { path: 'lionelpw', loadChildren: './+lionelpw#LionelPWModule' },
+  { path: 'favorites', loadChildren: './+favorites#FavoritesModule' },
   { path: '**',    component: NoContentComponent },
 ];

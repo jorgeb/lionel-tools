@@ -1,4 +1,4 @@
-import {
+﻿import {
   Component,
   OnInit
 } from '@angular/core';
@@ -6,6 +6,11 @@ import {
 import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLargeDirective } from './x-large';
+
+//import { LionelItemDB } from '../+lionelpw/lionel-item.db';
+import { DataProvider } from '../@dataprovider/dataprovider-provider';
+import { LionelItems, LionelAges } from '../@lionel-db';
+
 
 @Component({
   // The selector is what angular internally uses
@@ -28,7 +33,20 @@ export class HomeComponent implements OnInit {
   constructor(
     public appState: AppState,
     public title: Title
-  ) {}
+  ) {
+
+      LionelItems.get('23');
+      LionelAges.get('vMM');
+      /*
+      const db: LionelItemDB = new LionelItemDB();
+
+      console.log('(<any>LionelItemDB).metadata');
+      console.log((<any>LionelItemDB).metadata);
+      DataProvider.get<LionelItemDB>('vMM');
+      DataProvider.activator(LionelItemDB);
+      */
+      //db.get('');
+  }
 
   public ngOnInit() {
     console.log('hello `Home` component');

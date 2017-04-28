@@ -1,4 +1,8 @@
-﻿C:\Users\Jorge\Documents\dev\lionel_tool\desktop\google-apps-script>gapps auth C:\Users\Jorge\Documents\dev\lionel_tool\desktop\google-apps-script\client_secret_565255536329-n73g7s3oq6prdnojlnep7j4qa6506f2o.apps.googleusercontent.com.json
+﻿
+gulp upload-latest --env dev
+
+
+C:\Users\Jorge\Documents\dev\lionel_tool\desktop\google-apps-script>gapps auth C:\Users\Jorge\Documents\dev\lionel_tool\desktop\google-apps-script\client_secret_565255536329-n73g7s3oq6prdnojlnep7j4qa6506f2o.apps.googleusercontent.com.json
 
 
 
@@ -35,3 +39,78 @@ cd ../..
 gulp upload-latest --env dev
 
 https://script.google.com/macros/s/AKfycbwcryYEErcE2JJ5TG6xNEKQF0CH49b5k8by5cXBXP-M/dev
+
+lumns
+:
+Array[4]
+0
+:
+Object
+columnId
+:
+0
+formatPattern
+:
+"NONE"
+kind
+:
+"fusiontables#column"
+name
+:
+"LionelId"
+type
+:
+"NUMBER"
+validateData
+:
+false
+__proto__
+:
+Object
+1
+:
+Object
+2
+:
+Object
+3
+:
+Object
+length
+:
+4
+__proto__
+:
+Array[0]
+isExportable
+:
+true
+kind
+:
+"fusiontables#table"
+name
+:
+"New Table"
+tableId
+:
+"1iVYS6XMviFJPkZqNqQ-mcujExUA66X0c9apvkhQ3"
+__proto__
+:
+Object
+length
+:
+1
+__proto__
+:
+Array[0]
+kind
+:
+"fusiontables#tableList"
+__proto__
+:
+Object
+
+
+Yes, The name it is Pellts, like this http://www.plasticreef.com/?attachment_id=128 in black and white! thank you for your interest!
+
+https://www.youtube.com/watch?v=6lEE-RnyaP8&google_comment_id=z13gt5oheqe0dbrwj04cdzigxqvztvywzlg0k&google_view_type#gpluscomments

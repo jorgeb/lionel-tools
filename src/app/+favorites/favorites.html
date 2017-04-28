@@ -1,0 +1,15 @@
+﻿
+
+<div class="container">
+  <div class="row">
+    
+    <div class="col-sm-3" *ngFor="let item of favoriteItemsFilter">
+      <lt-card [options]="{title: item.title.length == 0? item.key.split('%3D')[1]:item.title, imgUrl:item.imgUrl, price:item.bid, key:key,
+               url:'http://ambrosebauer.com/lotdetail.php?auction=267&lot=' + item.key.split('%3D')[1] }"></lt-card>
+          
+    </div>
+        
+  </div>
+</div>
+
+<router-outlet></router-outlet>

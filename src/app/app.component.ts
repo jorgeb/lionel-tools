@@ -38,6 +38,13 @@ import { AppState } from './app.service';
       <a [routerLink]=" ['./ambrosebauer'] " routerLinkActive="active">
         Ambrosebauer
       </a>
+      <a [routerLink]=" ['./lionelpw'] " routerLinkActive="active">
+        Lionel Items By postwar.com
+      </a>
+      <a [routerLink]=" ['./favorites'] " routerLinkActive="active">
+        Manage Favorites
+      </a>
+
     </nav>
 
     <main>

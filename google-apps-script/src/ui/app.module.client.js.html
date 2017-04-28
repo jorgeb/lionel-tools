@@ -8,12 +8,13 @@
         'templates',
         'rx']);
 
+  /*
     angular
         .module('spread2TS')
-        .run(function($templateCache) {
-            $templateCache.put('templateId.html', 'This is the content of the template');
-        });
-
+      .run(function ($rootScope) {
+          new Rx.ScopeScheduler($rootScope);
+       });
+  */
 
     var routerConfig = function($stateProvider) {
 

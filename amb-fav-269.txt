@@ -1,0 +1,100 @@
+﻿[
+  {
+    "title": "Scarce Lionel #6464-1965 TCA Box Car/White OB",
+    "imgUrl": "http://ambrosebauer.com/auction269/2SAAN249.jpg",
+    "price": 35,
+    "key": "amb-269%26lot%3D2",
+    "url": "http://ambrosebauer.com/lotdetail.php?auction=269&lot=2"
+  },
+  {
+    "title": "Lionel #3672 Operating Bosco Set/OB+",
+    "imgUrl": "http://ambrosebauer.com/auction269/2SAAH128.jpg",
+    "price": 80,
+    "key": "amb-269%26lot%3D11",
+    "url": "http://ambrosebauer.com/lotdetail.php?auction=269&lot=11"
+  },
+  {
+    "title": "Lionel #1872/1872W Super-O 'General' Steam E&T/Perf OBs",
+    "imgUrl": "http://ambrosebauer.com/auction269/2SAAJ116.jpg",
+    "price": 50,
+    "key": "amb-269%26lot%3D36",
+    "url": "http://ambrosebauer.com/lotdetail.php?auction=269&lot=36"
+  },
+  {
+    "title": "Lionel #53 Rio Grande Snowplow/OB+",
+    "imgUrl": "http://ambrosebauer.com/auction269/2SAAK031.jpg",
+    "price": 80,
+    "key": "amb-269%26lot%3D52",
+    "url": "http://ambrosebauer.com/lotdetail.php?auction=269&lot=52"
+  },
+  {
+    "title": "Lionel #44 US Army Mobile Missile Launcher/OB+",
+    "imgUrl": "http://ambrosebauer.com/auction269/2SAAK051.jpg",
+    "price": 5,
+    "key": "amb-269%26lot%3D66",
+    "url": "http://ambrosebauer.com/lotdetail.php?auction=269&lot=66"
+  },
+  {
+    "title": "Great Lionel #6814 Medical Caboose/Perf OB",
+    "imgUrl": "http://ambrosebauer.com/auction269/2SAAE210.jpg",
+    "price": 45,
+    "key": "amb-269%26lot%3D69",
+    "url": "http://ambrosebauer.com/lotdetail.php?auction=269&lot=69"
+  },
+  {
+    "title": "Nice Lionel #6416 Boat Transport w/Red Boats/Pix OB",
+    "imgUrl": "http://ambrosebauer.com/auction269/2SAAE070.jpg",
+    "price": 5,
+    "key": "amb-269%26lot%3D94",
+    "url": "http://ambrosebauer.com/lotdetail.php?auction=269&lot=94"
+  },
+  {
+    "title": "Scarce Lionel #299 Code Transmitter Set/OB+",
+    "imgUrl": "http://ambrosebauer.com/auction269/2SAAQ025.jpg",
+    "price": 0,
+    "key": "amb-269%26lot%3D115",
+    "url": "http://ambrosebauer.com/lotdetail.php?auction=269&lot=115"
+  },
+  {
+    "title": "Lionel #3545 TV Monitor & #3419 Helicopter Cars/OBs",
+    "imgUrl": "http://ambrosebauer.com/auction269/2SAAN314.jpg",
+    "price": 5,
+    "key": "amb-269%26lot%3D116",
+    "url": "http://ambrosebauer.com/lotdetail.php?auction=269&lot=116"
+  },
+  {
+    "title": "Mint Lionel #3366 Operating Circus Car Set/OB+Mint Lionel #3366 Operating Circus Car Set/OB+",
+    "imgUrl": "http://ambrosebauer.com/auction269/2SAAH200.jpg",
+    "price": 5,
+    "key": "amb-269%26lot%3D125",
+    "url": "http://ambrosebauer.com/lotdetail.php?auction=269&lot=125"
+  },
+  {
+    "title": "Nice Lionel #375 Motorized Turntable/OB+",
+    "imgUrl": "http://ambrosebauer.com/auction269/2SAAS019.jpg",
+    "price": 0,
+    "key": "amb-269%26lot%3D136",
+    "url": "http://ambrosebauer.com/lotdetail.php?auction=269&lot=136"
+  },
+  {
+    "title": "Great Lionel #6827 Harnischfeger Power Shovel Set/OBs",
+    "imgUrl": "http://ambrosebauer.com/auction269/2SAAT001.jpg",
+    "price": 0,
+    "key": "amb-269%26lot%3D141",
+    "url": "http://ambrosebauer.com/lotdetail.php?auction=269&lot=141"
+  },
+  {
+    "title": "Lionel #6175 Flat w/Rocket & #6801 Flat w/Boat/OBs",
+    "imgUrl": "http://ambrosebauer.com/auction269/2SAAM031.jpg",
+    "price": 0,
+    "key": "amb-269%26lot%3D145",
+    "url": "http://ambrosebauer.com/lotdetail.php?auction=269&lot=145"
+  },
+  {
+    "title": "Scarce Lionel Uncataloged #6630 Black IRMB & #6651 Olive Cannon Cars ",
+    "imgUrl": "http://ambrosebauer.com/auction269/2SAAP046.jpg",
+    "price": 0,
+    "key": "amb-269%26lot%3D147",
+    "url": "http://ambrosebauer.com/lotdetail.php?auction=269&lot=147"
+  }
+]

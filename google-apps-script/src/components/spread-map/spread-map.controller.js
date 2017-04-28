@@ -2,14 +2,22 @@
   'use strict';
   console.log(' spreadMapController');
   angular.module('spread2TS')
-      .controller('spreadMapController', function (spreadMapService) {
-        var dd = this;
-          
-        spreadMapService.getColumnsFromSpread('1-4bmqP7mIVegdCd-aHeFI0ZfZ9xmfwnrK7yG0YC4TIY')
-            .subscribe(function (columns) {
-              console.log(columns);
+      .controller('spreadMapController', function ($scope,tableMapService) {
+        var sm = this;
+
+        tableMapService.getTable('1iVYS6XMviFJPkZqNqQ-mcujExUA66X0c9apvkhQ3')
+            .subscribe(function (table) {
+                $scope.columns = table.columns.map(function (c) {
+
+                    c.MapName = c.name;
+                    c.Append = true;
+
+                    return c;
+                });
+
+                $scope.$applyAsync();
         });
 
-        dd.vMM = "Otro vez! JAV";
+        $scope.vMM = "Otro vez! JAV";
       });
 })();
