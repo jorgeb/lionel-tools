@@ -14,5 +14,6 @@ export const ROUTES: Routes = [
   { path: 'ambrosebauer', loadChildren: './+ambrosebauer#AmbrosebauerModule' },
   { path: 'lionelpw', loadChildren: './+lionelpw#LionelPWModule' },
   { path: 'favorites', loadChildren: './+favorites#FavoritesModule' },
+  { path: 'dashboard', loadChildren: './+dashboard#DashboardModule' },
   { path: '**',    component: NoContentComponent },
 ];

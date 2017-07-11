@@ -8,7 +8,7 @@ import { routes } from './favorites.routes';
 import { FavoritesComponent } from './favorites.component';
 
 import { CardModule } from '../@card';
-
+import { CloudinaryModule } from '../@cloudinary';
 @NgModule({
     declarations: [
         // Components / Directives/ Pipes
@@ -19,7 +19,8 @@ import { CardModule } from '../@card';
         FormsModule,
         RouterModule.forChild(routes),
         HttpModule,
-        CardModule
+        CardModule,
+        CloudinaryModule
     ],
 })
 export class FavoritesModule {

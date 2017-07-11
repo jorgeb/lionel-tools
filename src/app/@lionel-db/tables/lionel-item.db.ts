@@ -7,17 +7,27 @@
     IEntityColumnOptions
 } from '../../@dataprovider';
 
-@Entity({ name: 'LionelItem' })
-export class LionelItemDB {
+import { ILionelItem } from './lionel-item.interface';
 
-    @Column({ name: 'External_Id' })
-    public ExternalId: string = null;
+@Entity({ name: '1iVYS6XMviFJPkZqNqQ-mcujExUA66X0c9apvkhQ3' })
+export class LionelItemDB implements ILionelItem, IEntityDecorator {
 
-    @Column()
-    public Title: string = null;
-
-    @PK()
-    public Id: string = null;
+    @PK({ name: 'LionelId' })
+    lionelId: string;
+    @Column({ name: 'Title' })
+    title: string;
+    @Column({ name: 'Desc' })
+    desc?: string;
+    images: Array<string>;
+    categoryId: number;
+    @Column({ name: 'CategoryBySource' })
+    categoryBySource?: string;
+    @Column({ name: 'LionelExternalId' })
+    lionelExternalId: string;
+    @Column({ name: 'LionelPartId' })
+    lionelPartId?: string;
+    @Column({ name: 'LionelEraId' })
+    lionelEraId: number;
 
     constructor() {
     }
@@ -37,4 +47,11 @@ export class LionelAgeDB {
     }
 
 }
+
+//SELECT * FROM 1iVYS6XMviFJPkZqNqQ-mcujExUA66X0c9apvkhQ3
+
+/*
+INSERT INTO <table_id> (<column_name> {, <column_name>}*) VALUES (<value> {, <value>}*)
+{ {;INSERT INTO <table_id> (<column_name> {, <column_name>}*) VALUES (<value> {, <value>}*)}* ;}
+*/
 

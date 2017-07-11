@@ -35,9 +35,13 @@ export class HomeComponent implements OnInit {
     public title: Title
   ) {
 
-      LionelItems.get('23');
-      LionelAges.get('vMM');
+      //LionelItems.get('23');
+      //LionelAges.get('vMM');
+     
       /*
+      LionelItems.save('vMM').subscribe(data => {
+                console.log('select vMM insert', JSON.parse(data._body))
+            });
       const db: LionelItemDB = new LionelItemDB();
 
       console.log('(<any>LionelItemDB).metadata');

@@ -7,7 +7,7 @@ import 'rxjs/observable/forkJoin';
 
 import { UUID } from 'angular2-uuid';
 
-import { ILionelItem } from './lionel-item.interface';
+import { ILionelItem } from '../@lionel-db/tables/lionel-item.interface';
 import { ILionelProviver } from './lionel-provider.interface';
 
 export abstract class LionelProvider implements ILionelProviver {

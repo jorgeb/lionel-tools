@@ -37,10 +37,10 @@ export class FavoritesComponent implements OnInit {
 
         this.favoriteItemsFilter =
             this.favoriteService.getAll().filter(f => {
-            return f.key.indexOf('270') > 0;
+            return f.key.indexOf('275') > 0;
             })
             .sort((a, b) => {
-                return parseInt(a.key.replace('amb-270%26lot%3D', '')) - parseInt(b.key.replace('amb-270%26lot%3D', ''));
+                return parseInt(a.key.replace('amb-275%26lot%3D', '')) - parseInt(b.key.replace('amb-275%26lot%3D', ''));
             });
         //amb-267%26lot%3D104
         console.log(this.favoriteItemsFilter)

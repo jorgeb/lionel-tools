@@ -48,8 +48,8 @@
        // Initialize the client with API key and People API, and initialize OAuth with an
        // OAuth 2.0 client ID and scopes (space delimited string) to request access.
        gapi.client.init({
-         apiKey: 'AIzaSyBKxWDq8mKW0I_IPSe0_yqWTtDRS8k4omo',
-         clientId: '557422729546-lcl809noeb83a1rqiprl7vapj2e4ptiq.apps.googleusercontent.com',
+         apiKey: 'AIzaSyDHitjuCrTBW7h9meDsW-59iuDZE55hSw8',
+         clientId: '1043387098142-peemn3h6s0hh631rhh8hfedq7t0ng6er.apps.googleusercontent.com',
          scope: 'https://www.googleapis.com/auth/fusiontables',
          response_type:'code'
        }).then(function () {
@@ -64,6 +64,9 @@
      function updateSigninStatus(isSignedIn) {
        // When signin status changes, this function is called.
        // If the signin status is changed to signedIn, we make an API call.
+       //console.log(gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token)
+       console.log(gapi.auth2.getAuthInstance().currentUser.get())
+
        if (isSignedIn) {
          makeApiCall();
        }
@@ -81,13 +84,24 @@
 
      function makeApiCall() {
        // Make an API call to the People API, and print the user's given name.
+
+       //gapi.client.setApiKey('AIzaSyA0FVy-lEr_MPGk1p_lHSrxGZDcxy6wH4o');
+
+       var query = "INSERT INTO 1iVYS6XMviFJPkZqNqQ-mcujExUA66X0c9apvkhQ3 (LionelId) VALUES ('vMM_4wii!') ";
+       /*
+       gapi.client.load('fusiontables', 'v2', function () {
+         gapi.client.fusiontables.query.sql({ sql: query }).execute(function (response) { console.log(response); });
+       });
+       */
+       /*
+
        gapi.client.people.people.get({
          resourceName: 'people/me'
        }).then(function (response) {
          console.log('Hello, ' + response.result.names[0].givenName);
        }, function (reason) {
          console.log('Error: ' + reason.result.error.message);
-       });
+       });*/
      }
   </script>
 

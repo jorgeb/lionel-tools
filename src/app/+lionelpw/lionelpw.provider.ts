@@ -1,5 +1,7 @@
 ﻿import { Inject } from '@angular/core';
-import { ILionelItem, LionelProvider } from '../@lionel';
+import { LionelProvider } from '../@lionel';
+import { ILionelItem } from '../@lionel-db/tables/lionel-item.interface';
+
 import { Http, Response } from '@angular/http';
 import * as $ from 'jquery';
 import { Observable } from 'rxjs';
@@ -20,17 +22,15 @@ export class LionelPWProvider extends LionelProvider {
         } else {
             this.URLs = this.getUrls();
         }
-        
     }
-    
+
     public getTitle = (html: any): string => {
         return $('H1.TitleHeading', html).text();
-    };
+    }
 
     public getDesc = (html: any): string => {
 
         //CategoryDescription
-          
         return $('.CategoryDescription > p, .CategoryDescription > ul', html)
             .toArray()
             .slice(1)
@@ -54,7 +54,7 @@ export class LionelPWProvider extends LionelProvider {
                     return sp.join('<==>');
                 }
             })
-            .join('\n');
+            .join('\n').replace(/\'/g, '&prime;').replace(/\n/g, '<br/>');
     };
     public getCategoryId = (html: any): number => {
 
@@ -62,7 +62,7 @@ export class LionelPWProvider extends LionelProvider {
     };
 
     public getCategoryBySource = (html: any): string => {
-        console.log($(html).filter('title').text())
+        
         return $(html).filter('title').text();
     };
     public getLionelExternalId = (html: any): string => {
@@ -122,7 +122,7 @@ export class LionelPWProvider extends LionelProvider {
             .toArray().map(a => {
                 return 'http://localhost:3001/url/'
                     + encodeURIComponent(a['href']);
-            }).slice(8,10);
+            }); //.slice(8,10);
 
         return links;
         

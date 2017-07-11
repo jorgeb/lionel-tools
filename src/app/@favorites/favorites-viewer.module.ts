@@ -5,7 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CardModule } from '../@card';
 
-import { FavoriteService } from './favorite.service'
+import { FavoriteService } from './favorite.service';
 import { FavoritesViewerComponent } from './favorites-viewer.component';
 
 @NgModule({

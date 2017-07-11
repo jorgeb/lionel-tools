@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @author: @AngularClass
  */
 
@@ -88,7 +88,7 @@ module.exports = function (options) {
       library: 'ac_[name]',
       libraryTarget: 'var',
     },
-
+    //entry: ["babel-polyfill", "./app/js"],
     module: {
 
       rules: [
@@ -154,6 +154,10 @@ module.exports = function (options) {
               path: 'zone.js/dist/long-stack-trace-zone.js'
             },
             'ts-helpers',
+            {
+              name: 'babel-polyfill',
+              path: 'babel-polyfill/dist/polyfill.js'
+            }
           ],
           vendor: [
             '@angular/platform-browser',

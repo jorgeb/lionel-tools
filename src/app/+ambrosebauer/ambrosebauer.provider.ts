@@ -21,7 +21,7 @@ export class AmbrosebauerProvider extends AuctionProvider {
     public listIterator: Array<any>;
 
     public getAuctionId = (): number => {
-        return 270;
+        return 275;
     };
 
     public getURLs = (iterator: any): Array<string> => {

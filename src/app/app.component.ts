@@ -44,7 +44,9 @@ import { AppState } from './app.service';
       <a [routerLink]=" ['./favorites'] " routerLinkActive="active">
         Manage Favorites
       </a>
-
+      <a [routerLink]=" ['./dashboard'] " routerLinkActive="active">
+        Dashboard
+      </a>
     </nav>
 
     <main>

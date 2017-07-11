@@ -1,0 +1,6 @@
+<div class="form-group" [class.has-danger]="searchFailed">
+  <label for="typeahead-http">Search for a lionel item:</label>
+  <input id="typeahead-http" type="text" class="form-control"  [(ngModel)]="lionelItemDB" [ngbTypeahead]="searchLionelItems" [inputFormatter]="inputFormatter" placeholder="Lionel Item search" />
+  <span *ngIf="searching">searching...</span>
+  <div class="form-control-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
+</div>
