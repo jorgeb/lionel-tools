@@ -1,0 +1,15 @@
+lionel-autocomplete{
+  .container-fluid{
+    //height: 100%;
+  }
+  .row{
+    //height: 50%;
+    overflow: hidden;
+  }
+  .col-6 {
+    max-height: 250px;
+  }
+  img{
+    max-height: 100%;
+  }
+}

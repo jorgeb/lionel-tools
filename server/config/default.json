@@ -1,0 +1,24 @@
+{
+    "connection":{
+        "server"  : "DESKTOP-MIMIKF5",
+        "userName": "LionelToolsDB",
+        "password": "LionelToolsDB",
+        "options": { "encrypt": true, "database": "LionelTools", "port": 56454  }
+    }/*,
+    "connection":{
+        "server"  : "azure-jab.database.windows.net",
+        "userName": "LionelToolsWeb",
+        "password": "LionelTrains@773",
+        "options": { "encrypt": true, "database": "LionelTools" }
+    },
+    "connection2":{
+    "dialect": "mssql",
+    "host": "DESKTOP-MIMIKF5",
+    "userName": "LionelToolsDB",
+    "password": "LionelToolsDB",
+    "database":"LionelTools",
+    "dialectOptions":{
+      "port": 56454
+    }
+    }*/
+}

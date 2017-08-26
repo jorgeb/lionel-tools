@@ -10,112 +10,54 @@ import { stringUtil } from '../@utils';
 import { IDataProviver } from './dataprovider.interface';
 import { IEntity } from './entity/entity.interface';
 import { IEntityDecorator } from './entity/entity.decorator.interface';
-import { IEntityColumn } from './entity/entity-column.interface';
-
-import { FusionTableService } from './fusion-table.service';
-export class DataProvider<T extends IEntityDecorator> implements IDataProviver<T> {
-
+import { IDatabase } from './database/datatabase.interface';
+export class DataProvider<T extends IEntityDecorator, R extends IDatabase>
+                    implements IDataProviver<T, R> {
     public entity: IEntity;
-    public get = (value: string | number): Observable<T> => {
+    public database: IDatabase;
 
-        FusionTableService.execute('SELECT * FROM 1iVYS6XMviFJPkZqNqQ-mcujExUA66X0c9apvkhQ3')
-            .subscribe(data => {
-                console.log('select vMM', JSON.parse(data._body))
-        });
-        console.log('IDataProviver<T>',this.entity);
+    constructor(private type: { new (): T; }, private dbtype: { new (): R; }) {
+        this.entity = new type().getEntityMetaData();
+        this.database = new dbtype();
+    }
+
+    public get = (value: string | number): Observable<T> => {
         return null;
     }
     public getAll = (): Observable<Array<T>> => {
-        let sqlTemplate = this.buildSQL('SELECT', this.entity);
-        sqlTemplate = stringUtil.template(sqlTemplate, {});
-        return FusionTableService.execute(sqlTemplate, true)
-            .map((r) => this.getObjectFromData(r, this.entity));
+        return this.database.Select<T>(this.entity);
     }
+
     public find = (where: string): Observable<Array<T>> => { return null; }
     public save = (dbObject: T): Observable<boolean> => {
-
+        return this.database.Insert(this.entity, dbObject);
+/*
         let sqlTemplate = this.buildSQL('INSERT', this.entity);
         sqlTemplate = stringUtil.template(sqlTemplate, dbObject);
         //INSERT INTO <table_id> (<column_name> {, <column_name>}*) VALUES (<value> {, <value>}*)
         return FusionTableService.execute(sqlTemplate, true);
+        */
+
     }
-    public update = (dbObject: any): Observable<boolean> => { return null; }
+    public update = (dbObject: any): Observable<boolean> => {
 
-    constructor(private type: { new (): T; }) {
-        this.entity = new type().getEntityMetaData();
-    }
+        /* Get ROWID */
+        /*
+        let sqlTemplate = this.buildSQL('ROWID', this.entity);
+        sqlTemplate = stringUtil.template(sqlTemplate, dbObject);
 
-    private buildSQL = (action: string, entity: IEntity): string => {
-
-        let ret: string = null;
-
-        switch (action) {
-            case 'SELECT': {
-                ret = this.buildSelect(entity);
-                break;
-            }
-            case 'INSERT': {
-                ret = this.buildInsert(entity);
-                break;
-            }
-        }
-
-        return ret;
-    }
-
-    private buildSelect = (entity: IEntity): string => {
-
-        let sql: string;
-
-        sql = `SELECT ${this.getColumns(entity)} FROM ${entity.name}`;
-        return sql;
-    }
-
-    private buildInsert = (entity: IEntity): string => {
-
-        let sql: string;
-
-        sql = `INSERT INTO ${entity.name} (${this.getColumns(entity)}) VALUES (${this.getVariablesValues(entity)})`;
-        return sql;
-    }
-
-    private getColumns = (entity: IEntity): string => {
-        let columns: Array<string> = [];
-        columns.push(`'${entity.pk.name}'`);
-
-        return columns.concat(entity.columns.map(c => { return `'${c.name}'` })).join(',');
-    }
-
-    private getVariablesValues = (entity: IEntity): string => {
-        let columns: Array<string> = [];
-        columns.push(`'\${item.${entity.pk.propertyKey}}'`);
-
-        return columns.concat(entity.columns.map(c => { return `'\${item.${c.propertyKey}}'` })).join(',');
-    }
-
-    private getObjectFromData = (response: any, entity: IEntity): T[] => {
-        const data: any = JSON.parse(response._body);
-        const objColumns: IEntityColumn[] = data.columns.map((column: string) => {
-            if (entity.pk.name === column) {
-                return entity.pk;
-            } else {
-                return entity.columns.find((c) => {
-                    return c.name === column;
+        FusionTableService.execute(sqlTemplate, false).subscribe((response) => {
+            const data: any = JSON.parse(response._body);
+            data.rows.forEach((row) => {
+                console.log('ROWID', row[0]);
+                let sqlUpdateTemplate = this.buildSQL('UPDATE', this.entity, row[0]);
+                sqlTemplate = stringUtil.template(sqlUpdateTemplate, dbObject);
+                FusionTableService.execute(sqlTemplate, true).subscribe((d) => {
                 });
-            }
-        });
-
-        return  data.rows.map((r) => {
-            const dataObj: T = new this.type();
-
-            r.forEach((element, idx) => {
-                dataObj[objColumns[idx].propertyKey] = element;
             });
-
-            return dataObj;
         });
+        */
+        //INSERT INTO <table_id> (<column_name> {, <column_name>}*) VALUES (<value> {, <value>}*)
+        return null;
     }
 }
-
-
-//1iVYS6XMviFJPkZqNqQ-mcujExUA66X0c9apvkhQ3

@@ -2,12 +2,16 @@
 var bodyParser = require("body-parser");
 var app = express();
 
+var config = require('config');
+var tediousExpress = require('express4-tedious');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    req.query = tediousExpress(req, config.get('connection'));
     next();
 });
 

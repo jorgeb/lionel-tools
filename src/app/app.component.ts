@@ -47,7 +47,10 @@ import { AppState } from './app.service';
       <a [routerLink]=" ['./dashboard'] " routerLinkActive="active">
         Dashboard
       </a>
-    </nav>
+      <a [routerLink]=" ['./tandem'] " routerLinkActive="active">
+        Tandem
+      </a>
+      </nav>
 
     <main>
       <router-outlet></router-outlet>

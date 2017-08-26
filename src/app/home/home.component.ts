@@ -9,7 +9,7 @@ import { XLargeDirective } from './x-large';
 
 //import { LionelItemDB } from '../+lionelpw/lionel-item.db';
 import { DataProvider } from '../@dataprovider/dataprovider-provider';
-import { LionelItems, LionelAges } from '../@lionel-db';
+import { LionelItems } from '../@lionel-db';
 
 
 @Component({

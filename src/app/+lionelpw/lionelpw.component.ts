@@ -14,7 +14,7 @@ import {
     Subscription
 } from 'rxjs';
 
-import { LionelItems, LionelAges } from '../@lionel-db';
+import { LionelItems, LionelItemImg } from '../@lionel-db';
 import { lionelPwUrls } from './lionel-urls.mock';
 /*
  * We're loading this component asynchronously
@@ -53,13 +53,17 @@ export class LionelPWComponent implements OnInit {
 
         ts2.getLionelItems().subscribe((i) => {
 
-            Observable.interval(2500)
+            Observable.interval(5500)
                 .takeWhile(() => (i.length > 0))
                 .subscribe(() => {
                     console.log(i.length);
                     if (i.length > 0) {
                         const li = i[0];
-                        LionelItems.save(li).subscribe((data) => {});
+                        LionelItemImg.update({
+                            lionelExternalId: li.lionelExternalId,
+                            images: (<string[]> li.images).join()
+                        });
+                        //LionelItems.save(li).subscribe((data) => {});
                         i.shift();
                     }
                 });

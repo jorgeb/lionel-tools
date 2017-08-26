@@ -104,7 +104,7 @@ export class LionelPWProvider extends LionelProvider {
     };
 
     private getUrls = (): Observable<Array<string>> => {
-        
+
         return this.http
             .get('http://localhost:3001/url/'
             + encodeURIComponent(`http://postwarlionel.com/`))

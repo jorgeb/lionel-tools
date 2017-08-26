@@ -1,6 +1,54 @@
+<template #rt let-r="result" let-t="term">
+  <img [src]="r['images']" width="16">
+  {{ r.title }}
+</template>
+<span>{{lionelResult.length}}</span>
 <div class="form-group" [class.has-danger]="searchFailed">
   <label for="typeahead-http">Search for a lionel item:</label>
-  <input id="typeahead-http" type="text" class="form-control"  [(ngModel)]="lionelItemDB" [ngbTypeahead]="searchLionelItems" [inputFormatter]="inputFormatter" placeholder="Lionel Item search" />
+  <input
+    id="typeahead-http"
+    type="text"
+    class="form-control"
+    [(ngModel)]="lionelItemDB"
+    [ngbTypeahead]="searchLionelItems"
+    [inputFormatter]="inputFormatter"
+    placeholder="Lionel Item search"
+    [resultTemplate]="rt"/>
   <span *ngIf="searching">searching...</span>
   <div class="form-control-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
 </div>
+<div class="container-fluid">
+  <div class="row">
+    <div *ngFor="let itmResult of lionelResult" class="col-6 align-self-center"><img class="img-fluid img-thumbnail" src="{{itmResult.images}}" /></div>
+  
+  </div>
+</div>
+<!--
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6 align-self-center"><img class="img-fluid img-thumbnail" src="{{lionelResult[0]?lionelResult[0].images:''}}" /></div>
+    <div class="col-6 align-self-center"><img class="img-fluid img-thumbnail" src="{{lionelResult[1]?lionelResult[1].images:''}}" /></div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <div class="row">
+        <div class="col-12 align-self-center">3</div>
+      </div>
+      <div class="row">
+        <div class="col-12 align-self-center">4</div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="row">
+        <div class="col-6 align-self-center">5</div>
+        <div class="col-6 align-self-center">6</div>
+      </div>
+      <div class="row">
+        <div class="col-6 align-self-center">7</div>
+        <div class="col-6 align-self-center">8</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+-->

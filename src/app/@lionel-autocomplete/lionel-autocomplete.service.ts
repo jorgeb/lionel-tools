@@ -2,30 +2,31 @@ import { Injectable } from '@angular/core';
 import { ICloudinaryResource } from './cloudinary-resource.interface';
 import { Observable } from 'rxjs';
 
-import { LionelItems } from '../@lionel-db';
-import { ILionelItem } from '../@lionel-db/tables/lionel-item.interface';
+import { LionelItemImg } from '../@lionel-db';
+import { ILionelItemImgDB } from '../@lionel-db/tables/lionel-Item.img.interface';
 
 @Injectable()
 export class LionelAutocompleteService {
-    private data: ILionelItem[] = null;
+    private data: ILionelItemImgDB[] = null;
     constructor() {
         this.getData().subscribe((r) => this.data = r);
     }
 
     public searchItem = (tag: string): Observable<any> => {
-      return this.getData().map((lis: ILionelItem[]) => {
-        return lis.filter((li: ILionelItem) => {
+      return this.getData().map((lis: ILionelItemImgDB[]) => {
+        return lis.filter((li: ILionelItemImgDB) => {
           return li.title.indexOf(tag) >= 0;
-        });
+        })
+        .splice(0, 10);
       });
     }
 
-    private getData = (): Observable<ILionelItem[]> => {
+    private getData = (): Observable<ILionelItemImgDB[]> => {
 
       if (this.data) {
         return Observable.of(this.data);
       } else {
-        return LionelItems.getAll();
+        return LionelItemImg.getAll();
       }
     }
 }

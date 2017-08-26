@@ -7,3 +7,7 @@ export { IEntity } from './entity/entity.interface';
 export { Column } from './entity/entity-column.decorator';
 export { IEntityColumnOptions } from './entity/entity-column-options.interface';
 export { PK } from './entity/entity-pk.decorator';
+
+export { FusionDB } from './database/fusion.db';
+export { SQLiteDB } from './database/sqlite.db';
+export { SQLDB } from './database/sql-server.db';

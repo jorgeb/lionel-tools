@@ -1,7 +1,7 @@
 ﻿import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FusionTableService } from './fusion-table.service';
+import { LiveAuctionersService } from './liveauctioners.service';
 
 @NgModule({
   declarations: [
@@ -12,6 +12,7 @@ import { FusionTableService } from './fusion-table.service';
       HttpModule
   ],
   providers: [
+    LiveAuctionersService
   ]
 })
-export class DataproviderModule {}
+export class LiveAuctionersModule {}

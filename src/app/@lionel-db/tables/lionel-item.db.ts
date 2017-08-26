@@ -9,29 +9,28 @@
 
 import { ILionelItem } from './lionel-item.interface';
 
-@Entity({ name: '1iVYS6XMviFJPkZqNqQ-mcujExUA66X0c9apvkhQ3' })
+//@Entity({ name: '1iVYS6XMviFJPkZqNqQ-mcujExUA66X0c9apvkhQ3' })
+@Entity({ name: 'LionelItems' })
 export class LionelItemDB implements ILionelItem, IEntityDecorator {
 
     @PK({ name: 'LionelId' })
-    lionelId: string;
+    public lionelId: string;
     @Column({ name: 'Title' })
-    title: string;
+    public title: string;
     @Column({ name: 'Desc' })
-    desc?: string;
-    images: Array<string>;
-    categoryId: number;
+    public desc?: string;
+    @Column({ name: 'Images' })
+    public images: Array<string> | string;
+    public categoryId: number;
     @Column({ name: 'CategoryBySource' })
-    categoryBySource?: string;
+    public categoryBySource?: string;
     @Column({ name: 'LionelExternalId' })
-    lionelExternalId: string;
+    public lionelExternalId: string;
     @Column({ name: 'LionelPartId' })
-    lionelPartId?: string;
+    public lionelPartId?: string;
     @Column({ name: 'LionelEraId' })
-    lionelEraId: number;
-
-    constructor() {
-    }
-
+    public lionelEraId: number;
+    constructor() {}
 }
 
 @Entity({ name: 'LionelAge' })
