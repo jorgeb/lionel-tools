@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 
 import { routes } from './tandem.routes';
 import { TandemComponent } from './tandem.component';
-
+import { LiveAuctionersModule } from '../@liveauctioners';
 import { LionelModule } from '../@lionel';
 
 @NgModule({
@@ -19,6 +19,7 @@ import { LionelModule } from '../@lionel';
         FormsModule,
         RouterModule.forChild(routes),
         LionelModule,
+        LiveAuctionersModule,
         HttpModule
     ],
     providers: [

@@ -10,6 +10,8 @@ import { ILionelItem } from '../@lionel-db/tables/lionel-item.interface';
 import { ILionelImage } from '../@lionel-db/tables/lionel-image.interface';
 import { LionelImageSQL } from '../@lionel-db/lionel-db';
 
+import { LiveAuctionersService } from '../@liveauctioners/liveauctioners.service';
+
 import { SQLiteService } from '../@dataprovider/database/sqlite.service';
 
 import {
@@ -33,7 +35,8 @@ export class TandemComponent implements OnInit {
     public lionelItems: ILionelItem[] = [];
     public lionelsearchLA: any[] = [];
 
-    constructor(private http: Http) {
+    constructor(private http: Http, private liveAuctionersService: LiveAuctionersService) {
+
 /*        SQLiteService.createDB().subscribe((r) => {
             console.log(r);
         });
@@ -47,6 +50,30 @@ export class TandemComponent implements OnInit {
     }
 
     public ngOnInit() {
+        this.http
+            .get('http://localhost:3001/sql/LionelItem')
+            .map((res: Response) => res.json())
+            .subscribe((data) => {
+                data.forEach ( i => {
+                    this.liveAuctionersService.searchImagesInPastByQuery(`lionel ${i.LionelId}`).subscribe((r) => {
+                        console.log(`lionel ${i.LionelId}`);
+                        r.forEach(img => {
+                            const lionelImage: ILionelImage = {
+                                fileName: img,
+                                id: null,
+                                isDefault: false,
+                                lionelId: i.Id,
+                                source: 'liveauctioner',
+                                title: 'Test 1',
+                                url: img
+                            };
+
+                            LionelImageSQL.save(lionelImage).subscribe((data) => {
+                            });
+                        });
+                    });
+                });
+            });
 
         const ts: TandemProvider = new TandemProvider(this.http);
 
@@ -75,7 +102,7 @@ JSON.stringify({
             sort: '-relevance'
         }));
         let options = new RequestOptions({search: myParams });
-
+/*
         const lionelImage: ILionelImage = {
             fileName: 'ts1',
             id: null,
@@ -89,7 +116,7 @@ JSON.stringify({
         LionelImageSQL.save(lionelImage).subscribe((data) => {
             console.log(data);
         });
-
+*/
         this.http
             .get('https://api.liveauctioneers.com/search/web/prod', options)
             .map((res: Response) => res.json())
