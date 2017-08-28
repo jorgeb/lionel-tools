@@ -8,10 +8,11 @@ import { Observable } from 'rxjs';
 import 'rxjs/observable/forkJoin';
 
 export class TandemProvider extends LionelProvider {
-
     public LionelItemIdByURL: { [url: string]: string; } = { };
     public URLs: Observable<Array<string>>;
     public inURLs: Array<string> = [];
+
+    private noImages: string[] = ['pictures/lionel_identsubtitle.gif', 'pictures/blackbar.gif'];
 
     constructor( @Inject(Http) http: Http, urls?: Array<string>) {
         super(http);
@@ -60,8 +61,21 @@ export class TandemProvider extends LionelProvider {
     };
 
     public getImages = (html: any): Array<string> => {
-        //__mce_add_custom__
-        return [$(`img[alt*="${this.getLionelExternalId(html)}"]`, html).data('src')];
+        const images: any[] = $('img', html).toArray();
+
+        return images.filter((img) => {
+            return Number($(img).attr('height')) > 60;
+        })
+        .map((img) => {
+            return $(img).data('src');
+        })
+        .filter((img: string, index: number, self: string[]) => {
+            return self.indexOf(img) === index;
+        })
+        .filter((img: string) => {
+            const noImg: boolean = this.noImages.some((ni) => {return ni === img; });
+            return img.startsWith('pictures') && !noImg;
+        });
     }
 
     public mapForPage = (response): any => {

@@ -1,6 +1,15 @@
 <template #rt let-r="result" let-t="term">
-  <img [src]="r['images']" width="16">
-  {{ r.title }}
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-12">{{ r.title }}</div>
+      </div>
+      <!--img  [src]="'http://www.tandem-associates.com/lionel/' + r.tags" class="img-fluid img-thumbnail"  />-->
+      
+      <div class="row">
+        <img *ngFor="let image of r['images']" [src]="'http://www.tandem-associates.com/lionel/' + image.FileName" class="col-2 img-fluid img-thumbnail"  />
+      </div>
+    
+    </div>
 </template>
 <span>{{lionelResult.length}}</span>
 <div class="form-group" [class.has-danger]="searchFailed">

@@ -29,3 +29,14 @@ as begin
       )
 end
 
+
+CREATE VIEW LionelItemImage
+AS
+select  it.Id, it.LionelId, it.Title, it.Tags, it.GetFrom,
+    (Select i.Id, FileName, IsDefault, Source 
+	   from [LionelImage] i
+		  where it.id = i.lionelId
+		  for json auto
+    ) AS Images
+from 
+    LionelItem it

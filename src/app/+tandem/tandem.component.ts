@@ -8,7 +8,7 @@ import { Http, Response, Headers, ResponseOptions, URLSearchParams, RequestOptio
 import { TandemProvider } from './tandem.provider';
 import { ILionelItem } from '../@lionel-db/tables/lionel-item.interface';
 import { ILionelImage } from '../@lionel-db/tables/lionel-image.interface';
-import { LionelImageSQL } from '../@lionel-db/lionel-db';
+import { LionelImageSQL, LionelItemSQL } from '../@lionel-db/lionel-db';
 
 import { LiveAuctionersService } from '../@liveauctioners/liveauctioners.service';
 
@@ -50,6 +50,38 @@ export class TandemComponent implements OnInit {
     }
 
     public ngOnInit() {
+
+        this.http
+        .get('http://localhost:3001/sql/LionelItem')
+        .map((res: Response) => res.json())
+        .subscribe((data) => {
+            data.forEach ( (i) => {
+                let ts2: TandemProvider = new TandemProvider(this.http,
+                    ['http://localhost:3001/url/' + encodeURIComponent(i.GetFrom)]);
+
+                ts2.getLionelItems().subscribe((items) => {
+                    items.forEach((it) => {
+
+                        (it.images as string[]).forEach((img) => {
+                            const lionelImage: ILionelImage = {
+                                fileName: img,
+                                id: null,
+                                isDefault: false,
+                                lionelId: i.Id,
+                                source: 'tandem',
+                                title: 'tandem',
+                                url: img
+                            };
+                            LionelImageSQL.save(lionelImage).subscribe((dataN) => {});
+                        });
+                    });
+        });
+/*
+        LionelItemSQL.getAll().subscribe((items) => {
+            console.log(items);
+        });
+*/
+/*
         this.http
             .get('http://localhost:3001/sql/LionelItem')
             .map((res: Response) => res.json())
@@ -74,7 +106,7 @@ export class TandemComponent implements OnInit {
                     });
                 });
             });
-
+*/
         const ts: TandemProvider = new TandemProvider(this.http);
 
         const headers = new Headers({
@@ -117,6 +149,7 @@ JSON.stringify({
             console.log(data);
         });
 */
+/*
         this.http
             .get('https://api.liveauctioneers.com/search/web/prod', options)
             .map((res: Response) => res.json())
@@ -140,7 +173,8 @@ JSON.stringify({
                         console.log(data2);
                     });
             });
-/*
+*/
+            /*
         this.http
             .post('https://item-api-prod.liveauctioneers.com/spa/small/items?c=20170802',
             JSON.stringify({

@@ -18,6 +18,16 @@ export class QueryBuilderService {
     public static persistAsObject = (entity: IEntity, values: any): Object => {
         return QueryBuilderService.getObject(entity, values);
     }
+    public static getEntityFromDBObject = (entity: IEntity, values: any): Object => {
+        let columns: string[] = [];
+        let ret = {};
+
+        ret[entity.pk.propertyKey] = values[entity.pk.name];
+        entity.columns.forEach((column) => {
+            ret[column.propertyKey] = values[column.name];
+        });
+        return ret;
+    }
     private static buildSQL = (action: string, entity: IEntity, rowId?: string): string => {
 
         let ret: string = null;
@@ -108,5 +118,4 @@ export class QueryBuilderService {
         });
         return ret;
     }
-
 }

@@ -20,10 +20,8 @@ export class SQLDB implements IDatabase {
     }
 
     public Select<T>(entity: IEntity): Observable<T[]> {
-      let sqlTemplate = QueryBuilderService.sqlSelect(entity);
-      sqlTemplate = stringUtil.template(sqlTemplate, {});
 
-      return SQLService.execute(sqlTemplate, 'GET', null)
+        return SQLService.execute(entity.name, 'GET', null)
           .map((r) => this.getObjectFromData<T>(r, entity));
     }
 
@@ -31,24 +29,10 @@ export class SQLDB implements IDatabase {
 
     private getObjectFromData<T> (response: any, entity: IEntity): T[] {
         const data: any = JSON.parse(response._body);
-        const objColumns: IEntityColumn[] = data.columns.map((column: string) => {
-            if (entity.pk.name === column) {
-                return entity.pk;
-            } else {
-                return entity.columns.find((c) => {
-                    return c.name === column;
-                });
-            }
-        });
-
-        return  data.rows.map((r) => {
+        return  data.map((r) => {
             const dataObj: any = {};
 
-            r.forEach((element, idx) => {
-                dataObj[objColumns[idx].propertyKey] = element;
-            });
-
-            return dataObj;
+            return QueryBuilderService.getEntityFromDBObject(entity, r);
         });
     }
 }
